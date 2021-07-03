@@ -71,7 +71,6 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, stratify = diabetes_mo
 
 
 # 然后我们用“accuracy_score”来计算各个模型的准确率。
-
 names = []
 scores = []
 for name, model in models:
@@ -97,12 +96,15 @@ kf_cross_val = pd.DataFrame({'Name': names, 'Score': scores})
 print(kf_cross_val)
 
 
+axis.patches 
+
+
 axis = sns.barplot(data = kf_cross_val,x = 'Name', y = 'Score' )
 axis.set(xlabel='Classifier', ylabel='Accuracy')
-for p in axis.patches:
-    height = p.get_height()
-    axis.text(p.get_x() + p.get_width()/2, height + 0.005, '{:1.4f}'.format(height), ha="center") 
-    
+for p in axis.patches: # 大概是返回每个柱子对象
+    height = p.get_height() # 获取高度
+    x = p.get_x() + p.get_width()/2 # 确定x坐标
+    axis.text(x, height + 0.005, '{:1.4f}'.format(height), ha="center") 
 plt.show()
 
 

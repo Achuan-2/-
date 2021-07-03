@@ -19,12 +19,18 @@ y = iris.target
 
 
 
+label_binarize(['A', "C"], classes=["A", "C", "T", "G"])
+
+
 y
 
 
 # Binarize the output
 y = label_binarize(y, classes=[0, 1, 2])
 n_classes = y.shape[1]
+
+
+y
 
 
 n_classes 
@@ -56,6 +62,9 @@ for i in range(n_classes):
 # Compute micro-average ROC curve and ROC area
 fpr["micro"], tpr["micro"], _ = roc_curve(y_test.ravel(), y_score.ravel())
 roc_auc["micro"] = auc(fpr["micro"], tpr["micro"])
+
+
+X
 
 
 import numpy as np
